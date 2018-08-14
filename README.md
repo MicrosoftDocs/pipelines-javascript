@@ -1,3 +1,15 @@
+# Sample NodeJS application for VSTS and TFS docs
+
+For information on how to use this repository, see [JavaScript](https://docs.microsoft.com/vsts/pipelines/languages/javascript).
+
+| Example | Build status |
+|---------|--------------|
+| Build | [![Build status](https://pipelines-docs.visualstudio.com/docs/_apis/build/status/javascript/nodejs)](https://pipelines-docs.visualstudio.com/docs/_build/latest?definitionId=7) |
+| Build (YAML) | [![Build status](https://pipelines-docs.visualstudio.com/docs/_apis/build/status/javascript/nodejs-yaml)](https://pipelines-docs.visualstudio.com/docs/_build/latest?definitionId=8) |
+| Build image and push to Docker Hub | [![Build status](https://pipelines-docs.visualstudio.com/docs/_apis/build/status/javascript/nodejs-dockerhub)](https://pipelines-docs.visualstudio.com/docs/_build/latest?definitionId=9) |
+| Build image and push to Docker Hub (YAML) | [![Build status](https://pipelines-docs.visualstudio.com/docs/_apis/build/status/javascript/nodejs-dockerhub-yaml)](https://pipelines-docs.visualstudio.com/docs/_build/latest?definitionId=10) |
+| Build image and push to Azure Container Registry | [![Build status](https://pipelines-docs.visualstudio.com/docs/_apis/build/status/javascript/nodejs-acr)](https://pipelines-docs.visualstudio.com/docs/_build/latest?definitionId=11) |
+| Build image and push to Azure Container Registry (YAML) | [![Build status](https://pipelines-docs.visualstudio.com/docs/_apis/build/status/javascript/nodejs-acr-yaml)](https://pipelines-docs.visualstudio.com/docs/_build/latest?definitionId=12) |
 
 # Contributing
 
