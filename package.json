@@ -1,0 +1,23 @@
+{
+  "name": "HelloWorld",
+  "private": true,
+  "version": "0.0.0",
+  "description": "Hello World",
+  "main": "server.js",
+  "author": {
+    "name": "",
+    "email": ""
+  },
+  "dependencies": {
+    "express": "^4.13.3",
+    "mocha": "^3.0.0"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-mocha": "^2.2.0",
+    "mocha-junit-reporter": "^1.12.0"
+  },
+  "scripts": {
+    "test": "./node_modules/.bin/mocha tests/**/*.js --reporter mocha-junit-reporter --reporter-options mochaFile=./TEST-RESULTS.xml"
+  }
+}

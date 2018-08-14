@@ -1,0 +1,21 @@
+# Build NodeJS Express app using VSTS
+# https://docs.microsoft.com/vsts/pipelines/languages/javascript?view=vsts
+
+queue: 'Hosted Linux Preview'
+
+steps:
+- script: |
+    npm install
+    npm test
+
+- task: PublishTestResults@2
+  inputs:
+    testRunner: JUnit
+    testResultsFiles: '**/TEST-RESULTS.xml'
+
+- task: ArchiveFiles@2
+  inputs:
+    rootFolderOrFile: '$(System.DefaultWorkingDirectory)'
+    includeRootFolder: false
+
+- task: PublishBuildArtifacts@1
