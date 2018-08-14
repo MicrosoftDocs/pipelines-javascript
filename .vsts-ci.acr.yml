@@ -12,7 +12,7 @@ steps:
     npm install
     npm test
     docker build -t $(dockerId).azurecr.io/$(imageName) .
-    docker login -u $(dockerId).azurecr.io -p $pswd $(dockerId).azurecr.io
+    docker login -u $(dockerId) -p $pswd $(dockerId).azurecr.io
     docker push $(dockerId).azurecr.io/$(imageName)
   env:
     pswd: $(dockerPassword)
