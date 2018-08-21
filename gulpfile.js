@@ -9,5 +9,8 @@ gulp.task('default', function () {
           reporterOptions: {
             mochaFile: './TEST-RESULTS.xml'
           }
+        }))
+        .pipe(istanbul.writeReports({    // my change
+          reporters: ['cobertura', 'html'] 
         }));
 });
