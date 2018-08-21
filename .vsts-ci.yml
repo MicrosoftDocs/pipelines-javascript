@@ -12,7 +12,7 @@ steps:
 - task: PublishTestResults@2
   inputs:
 #    testRunner: JUnit my change
-    testResultsFiles: '**/test-results.xml' #my change
+    testResultsFiles: '**/TEST-RESULTS.xml' #my change
     testRunTitle: 'Test results for JavaScript' #my change
 
 #my change
