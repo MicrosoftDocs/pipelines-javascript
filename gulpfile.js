@@ -11,14 +11,14 @@ gulp.task('default', function () {
       //.pipe(istanbul.hookRequire());
     
     gulp.src('tests/**/*.js')
-        .pipe(istanbul())
-        .pipe(istanbul.hookRequire())
         .pipe(mocha({
           reporter: 'mocha-junit-reporter',
           reporterOptions: {
             mochaFile: './TEST-RESULTS.xml'
           }
         }))
+        .pipe(istanbul())
+        .pipe(istanbul.hookRequire())
         .pipe(istanbul.writeReports({    // my change
           dir: './coverage',
           reporters: ['cobertura', 'html', 'json'] 
