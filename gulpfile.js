@@ -7,7 +7,7 @@ gulp.task('default', function () {
         .pipe(mocha({
           reporter: 'mocha-junit-reporter',
           reporterOptions: {
-            mochaFile: './TEST-RESULTS.xml'
+            mochaFile: './test-results.xml'
           }
         }))
         .pipe(istanbul.writeReports({    // my change
