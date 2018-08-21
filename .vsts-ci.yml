@@ -6,16 +6,13 @@ queue: 'Hosted Linux Preview'
 steps:
 - script: |
     npm install
-#    npm test
-- script: gulp
+    npm test
 
 - task: PublishTestResults@2
   inputs:
-#    testRunner: JUnit my change
-    testResultsFiles: '**/TEST-RESULTS.xml' #my change
-    testRunTitle: 'Test results for JavaScript' #my change
+    testResultsFiles: '**/TEST-RESULTS.xml'
+    testRunTitle: 'Test results for JavaScript'
 
-#my change
 - task: PublishCodeCoverageResults@1
   inputs: 
     codeCoverageTool: Cobertura
