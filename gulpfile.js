@@ -13,6 +13,6 @@ gulp.task('default', function () {
         }))
         .pipe(istanbul.writeReports({    // my change
           dir: './coverage',
-          reporters: ['cobertura', 'html'] 
+          reporters: ['cobertura', 'html', 'json'] 
         }));
 });
