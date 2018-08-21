@@ -19,8 +19,8 @@ steps:
 
 - task: PublishTestResults@2
   inputs:
-    testRunner: JUnit
     testResultsFiles: '**/TEST-RESULTS.xml'
+    testRunTitle: 'Test results for JavaScript'
 
 - task: PublishCodeCoverageResults@1
   inputs: 
