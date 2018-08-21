@@ -6,7 +6,8 @@ queue: 'Hosted Linux Preview'
 steps:
 - script: |
     npm install
-    npm test
+#    npm test
+- script: gulp
 
 - task: PublishTestResults@2
   inputs:
