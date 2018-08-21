@@ -4,13 +4,15 @@ var istanbul = require('gulp-istanbul') //my change
 var fs = require('fs');
 
 gulp.task('default', function () {
-    gulp.src('tests/**/*.js')
+   // gulp.src('tests/**/*.js')
     // Covering files
-      .pipe(istanbul())
+     // .pipe(istanbul())
     // Force `require` to return covered files
-      .pipe(istanbul.hookRequire());
+      //.pipe(istanbul.hookRequire());
     
     gulp.src('tests/**/*.js')
+        .pipe(istanbul())
+        .pipe(istanbul.hookRequire())
         .pipe(mocha({
           reporter: 'mocha-junit-reporter',
           reporterOptions: {
