@@ -6,19 +6,15 @@ queue: 'Hosted Linux Preview'
 steps:
 - script: |
     npm install
-#    npm test
-- script: npm test
-
-#- task: PublishTestResults@2
-#  inputs:
-#    testRunner: JUnit
-#    testResultsFiles: '**/test-results.xml' #my change
+    npm test
 
 - task: PublishTestResults@2
   inputs:
-    testResultsFiles: '**/test-results.xml'
-    testRunTitle: 'Test results for JavaScript'
+#    testRunner: JUnit my change
+    testResultsFiles: '**/test-results.xml' #my change
+    testRunTitle: 'Test results for JavaScript' #my change
 
+#my change
 - task: PublishCodeCoverageResults@1
   inputs: 
     codeCoverageTool: Cobertura
