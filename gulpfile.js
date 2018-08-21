@@ -4,7 +4,7 @@ var istanbul = require('gulp-istanbul') //my change
 var fs = require('fs');
 
 gulp.task('default', function () {
-    gulp.src(['**/*.js'])
+    gulp.src('*.js')
     // Covering files
       .pipe(istanbul())
     // Force `require` to return covered files
