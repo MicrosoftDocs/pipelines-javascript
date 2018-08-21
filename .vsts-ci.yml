@@ -6,13 +6,25 @@ queue: 'Hosted Linux Preview'
 steps:
 - script: |
     npm install
-    npm test
+#    npm test
+- script: npm test
+
+#- task: PublishTestResults@2
+#  inputs:
+#    testRunner: JUnit
+#    testResultsFiles: '**/test-results.xml' #my change
 
 - task: PublishTestResults@2
   inputs:
-    testRunner: JUnit
-    testResultsFiles: '**/TEST-RESULTS.xml'
+    testResultsFiles: '**/test-results.xml'
+    testRunTitle: 'Test results for JavaScript'
 
+- task: PublishCodeCoverageResults@1
+  inputs: 
+    codeCoverageTool: Cobertura
+    summaryFileLocation: '$(System.DefaultWorkingDirectory)/**/*coverage.xml'
+    reportDirectory: '$(System.DefaultWorkingDirectory)/**/coverage'
+    
 - task: ArchiveFiles@2
   inputs:
     rootFolderOrFile: '$(System.DefaultWorkingDirectory)'
