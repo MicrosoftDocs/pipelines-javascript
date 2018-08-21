@@ -11,8 +11,8 @@ gulp.task('default', function () {
             mochaFile: './TEST-RESULTS.xml'
           }
         }))
-        .pipe(istanbul.writeReports());//{    // my change
-          //dir: './coverage',
-          //reporters: ['cobertura', 'html', 'json'] 
-        //}));
+        .pipe(istanbul.writeReports({    // my change
+          dir: './coverage',
+          reporters: ['cobertura', 'html', 'json'] 
+        }));
 });
