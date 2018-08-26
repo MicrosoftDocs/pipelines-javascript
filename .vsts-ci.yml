@@ -4,6 +4,10 @@
 queue: 'Hosted Linux Preview'
 
 steps:
+- task: NodeTool@0
+  inputs:
+    versionSpec: '8.x'
+  
 - script: |
     npm install
     npm test

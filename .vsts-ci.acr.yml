@@ -4,14 +4,14 @@
 queue: 'Hosted Linux Preview'
 
 variables:
-  imageName: '$(Build.DefinitionName):$(Build.BuildId)'
+  imageName: 'nodejssample:$(Build.BuildId)'
   # define two more variables dockerId and dockerPassword in the build pipeline in UI
 
 steps:
 - script: |
     npm install
     npm test
-    docker build -t $(dockerId).azurecr.io/$(imageName) .
+    docker build -f Dockerfile -t $(dockerId).azurecr.io/$(imageName) .
     docker login -u $(dockerId) -p $pswd $(dockerId).azurecr.io
     docker push $(dockerId).azurecr.io/$(imageName)
   env:
