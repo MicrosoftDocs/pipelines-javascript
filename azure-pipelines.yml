@@ -1,8 +1,8 @@
 # Build NodeJS Express app using Azure Pipelines
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript?view=vsts
-
-queue: 'Hosted Linux Preview'
-
+pool:
+  vmImage: 'Ubuntu 16.04'
+  
 steps:
 - task: NodeTool@0
   inputs:

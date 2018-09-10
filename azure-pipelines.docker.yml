@@ -1,8 +1,8 @@
 # Build Docker image for this app using Azure Pipelines
 # https://docs.microsoft.com/azure/devops/pipelines/languages/docker?view=vsts
-
-queue: 'Hosted Linux Preview'
-
+pool:
+  vmImage: 'Ubuntu 16.04'
+  
 variables:
   imageName: 'nodejssample:$(Build.BuildId)'
   # define two more variables dockerId and dockerPassword in the build pipeline in UI
