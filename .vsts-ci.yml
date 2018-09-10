@@ -1,5 +1,5 @@
-# Build NodeJS Express app using VSTS
-# https://docs.microsoft.com/vsts/pipelines/languages/javascript?view=vsts
+# Build NodeJS Express app using Azure Pipelines
+# https://docs.microsoft.com/azure/devops/pipelines/languages/javascript?view=vsts
 
 queue: 'Hosted Linux Preview'
 
