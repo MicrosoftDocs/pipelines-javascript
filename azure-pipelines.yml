@@ -8,9 +8,11 @@ steps:
   inputs:
     versionSpec: '8.x'
   
-- script: |
-    npm install
-    npm test
+- task: Npm@1
+    inputs:
+      command: install
+
+- script: npm test
 
 - task: PublishTestResults@2
   inputs:
