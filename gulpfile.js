@@ -1,7 +1,6 @@
-var gulp = require('gulp');
-var mocha = require('gulp-mocha');
-var istanbul = require('gulp-istanbul')
-var fs = require('fs');
+const gulp = require('gulp');
+const mocha = require('gulp-mocha');
+const istanbul = require('gulp-istanbul')
 
 gulp.task('default', function () {
     gulp.src('tests/**/*.js')
