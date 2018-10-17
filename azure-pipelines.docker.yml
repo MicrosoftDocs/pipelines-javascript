@@ -6,12 +6,15 @@ pool:
 variables:
   imageName: 'nodejssample:$(Build.BuildId)'
   # define two more variables dockerId and dockerPassword in the build pipeline in UI
-  
-  dummyName: '$(Build.BuildId)-$(Build.SourceBranchName)'
 
 steps:
+- script: echo 'Branch name:'
+  condition: eq(variables['Build.SourceBranchName', 'master'])
+  
+- script: echo 'Branch name:variables['Build.SourceBranchName]'
+  condition: neq(variables['Build.SourceBranchName'], 'master')
+  
 - script: |
-    echo $(dummyName)
     npm install
     npm test
     docker build -f Dockerfile -t $(dockerId)/$(imageName) .
