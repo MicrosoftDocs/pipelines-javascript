@@ -11,7 +11,7 @@ steps:
 - script: echo 'Branch name:'
   condition: eq(variables['Build.SourceBranchName'], 'master')
   
-- script: echo 'Branch name: variables['Build.SourceBranchName']'
+- script: echo 'Branch name: $('Build.SourceBranchName')'
   condition: ne(variables['Build.SourceBranchName'], 'master')
   
 - script: |
