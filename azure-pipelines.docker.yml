@@ -6,12 +6,14 @@ pool:
 variables:
   imageName: 'nodejssample:$(Build.BuildId)'
   # define two more variables dockerId and dockerPassword in the build pipeline in UI
-
+  version: '1.0.$(Build.BuildId)'
+  branchName: '$(Build.SourceBranchName)'
+  
 steps:
-- script: echo: '1.0.$(BuildId)-$(SourceBranchName)'
+- script: echo: '$(version)'
   condition: eq(variables['Build.SourceBranchName'], 'master')
   
-- script: echo: '1.0.$(BuildId)-$(SourceBranchName)'
+- script: echo: '$(version)-$(branchName)'
   condition: ne(variables['Build.SourceBranchName'], 'master')
   
 - script: |
