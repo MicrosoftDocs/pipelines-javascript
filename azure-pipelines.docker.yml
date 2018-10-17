@@ -8,10 +8,10 @@ variables:
   # define two more variables dockerId and dockerPassword in the build pipeline in UI
 
 steps:
-- script: echo: '1.0.$(Build.BuildId)-$(Build.SourceBranchName)'
+- script: echo: '1.0.$(BuildId)-$(SourceBranchName)'
   condition: eq(variables['Build.SourceBranchName'], 'master')
   
-- script: echo: '1.0.$(Build.BuildId)-$(Build.SourceBranchName)'
+- script: echo: '1.0.$(BuildId)-$(SourceBranchName)'
   condition: ne(variables['Build.SourceBranchName'], 'master')
   
 - script: |
