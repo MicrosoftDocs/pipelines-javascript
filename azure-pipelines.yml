@@ -9,12 +9,15 @@ steps:
     versionSpec: '8.x'
   
 - task: Npm@1
+  displayName: 'npm install'
   inputs:
     command: install
 
 - task: Npm@1
+  displayName: 'npm test'
   inputs:
-    command: test
+    command: custom
+    customCommand: 'test'
 
 - task: PublishTestResults@2
   inputs:
