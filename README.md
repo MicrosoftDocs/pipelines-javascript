@@ -1,4 +1,4 @@
-# Sample NodeJS application for Azure Pipelines docs
+# Sample NodeJS application for Azure Pipelines docs - testing CI from Azure Devops Pipeline
 
 For information on how to use this repository, see [JavaScript](https://docs.microsoft.com/azure/devops/pipelines/languages/javascript).
 
