@@ -18,6 +18,7 @@ steps:
     pswd: $(dockerPassword)
 
 - task: PublishTestResults@2
+  condition: succeededOrFailed()
   inputs:
     testResultsFiles: '**/TEST-RESULTS.xml'
     testRunTitle: 'Test results for JavaScript'
