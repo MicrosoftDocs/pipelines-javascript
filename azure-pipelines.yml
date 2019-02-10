@@ -29,7 +29,7 @@ steps:
   inputs: 
     codeCoverageTool: Cobertura
     summaryFileLocation: '$(System.DefaultWorkingDirectory)/**/*coverage.xml'
-    reportDirectory: '$(System.DefaultWorkingDirectory)/**/coverage'
+    reportDirectory: '$(System.DefaultWorkingDirectory)/**/lcov-report'
     
 - task: ArchiveFiles@2
   inputs:
