@@ -1,6 +1,6 @@
 # FORK: Sample NodeJS application for Azure Pipelines docs
 
-> EDIT: Removed docker things, code is typescript and test framework jest
+> EDIT: Removed docker things, code is typescript and test framework jest  
 > Also removed server.js and added an index.ts for coverage to actually have some content
 
 For information on how to use this repository, see [JavaScript](https://docs.microsoft.com/azure/devops/pipelines/languages/javascript).

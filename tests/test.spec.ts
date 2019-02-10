@@ -19,9 +19,4 @@ describe('pipePlease', () => {
         expect(pipePlease()).toBe('some pipe ey');
         // assert
     });
-    test('fails expected', () => {        
-        // act
-        expect(pipePlease()).toBe('some pipe eye');
-        // assert
-    });
 })
