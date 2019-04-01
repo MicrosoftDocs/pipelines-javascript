@@ -32,7 +32,19 @@ in this repository under the [Creative Commons Attribution 4.0 International Pub
 see the [LICENSE](LICENSE) file, and grant you a license to any code in the repository under the [MIT License](https://opensource.org/licenses/MIT), see the
 [LICENSE-CODE](LICENSE-CODE) file.
 
-Microsoft, Windows, Microsoft Azure and/or other Microsoft products and services referenced in the documentation
+Microsoft, Windows, Microsoft Azure and/or other Microsoft products and services referenc    #action: 'create' # Options: create, edit, delete
+    #target: '$(Build.SourceVersion)' # Required when action == Create || Action == Edit
+    #tagSource: 'auto' # Required when action == Create# Options: auto, manual
+    #tag: # Required when action == Edit || Action == Delete || TagSource == Manual
+    #title: # Optional
+    #releaseNotesSource: 'file' # Optional. Options: file, input
+    #releaseNotesFile: # Optional
+    #releaseNotes: # Optional
+    #assets: '$(Build.ArtifactStagingDirectory)/*' # Optional
+    #assetUploadMode: 'delete' # Optional. Options: delete, replace
+    #isDraft: false # Optional
+    #isPreRelease: false # Optional
+    #addChangeLog: true # Optionaled in the documentation
 may be either trademarks or registered trademarks of Microsoft in the United States and/or other countries.
 The licenses for this project do not grant you rights to use any Microsoft names, logos, or trademarks.
 Microsoft's general trademark guidelines can be found at http://go.microsoft.com/fwlink/?LinkID=254653.
