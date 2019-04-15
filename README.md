@@ -1,3 +1,5 @@
+[![Build Status](https://dev.azure.com/ChengLawson/test/_apis/build/status/ChengLawson.pipelines-javascript?branchName=master)](https://dev.azure.com/ChengLawson/test/_build/latest?definitionId=1&branchName=master)
+
 # Sample NodeJS application for Azure Pipelines docs
 
 For information on how to use this repository, see [JavaScript](https://docs.microsoft.com/azure/devops/pipelines/languages/javascript).
