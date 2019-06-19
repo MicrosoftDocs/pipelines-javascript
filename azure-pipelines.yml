@@ -7,7 +7,7 @@ trigger:
   - azure-pipelines
 
 pool:
-  vmImage: 'ubuntu-latest'
+  vmImage: 'macOS-10.13' # examples of other options: 'ubuntu-16.04', 'vs2017-win2016'
 
 steps:
 - task: NodeTool@0
@@ -15,7 +15,7 @@ steps:
     versionSpec: '10.x'
   displayName: 'Install Node.js'
 
-- script: |
-    npm install
+- script:
+    npm install --only=dev
     npm run build
   displayName: 'npm install and build'
