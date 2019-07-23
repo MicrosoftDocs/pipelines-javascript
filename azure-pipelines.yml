@@ -19,3 +19,7 @@ steps:
     npm install
     npm run build
   displayName: 'npm install and build'
+  
+  pool:
+  vmImage: 'ubuntu-16.04' # examples of other options: 'macOS-10.13', 'vs2017-win2016'
+  
