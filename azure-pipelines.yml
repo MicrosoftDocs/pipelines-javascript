@@ -4,10 +4,7 @@ strategy:
   matrix:
     linux:
       imageName: 'ubuntu-16.04'
-    mac:
-      imageName: 'macos-10.13'
-    windows:
-      imageName: 'vs2017-win2016'
+
 
 pool:
   vmImage: $(imageName)
@@ -17,8 +14,13 @@ steps:
   inputs:
     versionSpec: '8.x'
 
+- task: Npm@1
+  inputs:
+    command: 'install'
+    customRegistry: 'useFeed'
+    customFeed: '184f97a3-2268-4478-b14e-7644d051572c'
+
 - script: |
-    npm install
     npm test
 
 - task: PublishTestResults@2
