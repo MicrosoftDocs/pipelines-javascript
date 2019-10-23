@@ -23,6 +23,7 @@ steps:
 - script: |
     npm test
 
+
 - task: PublishTestResults@2
   inputs:
     testResultsFiles: '**/TEST-RESULTS.xml'
@@ -38,5 +39,25 @@ steps:
   inputs:
     rootFolderOrFile: '$(System.DefaultWorkingDirectory)'
     includeRootFolder: false
+
+- task: CopyFiles@2
+  inputs:
+    SourceFolder: '$(System.DefaultWorkingDirectory)'
+    Contents: '*.zip'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+    OverWrite: true
+
+- task: UniversalPackages@0
+  inputs:
+    command: 'publish'
+    vstsFeed: '184f97a3-2268-4478-b14e-7644d051572c'
+    vstsFeedPackage: '8bc71e1a-ec02-4a11-a89a-809e68a9bc26'
+    vstsPackageVersion: '1.0.0'
+    publishDirectory: '$(Build.ArtifactStagingDirectory)'
+    feedsToUsePublish: 'internal'
+    vstsFeedPublish: '184f97a3-2268-4478-b14e-7644d051572c'
+    vstsFeedPackagePublish: 'universaldemo'
+    versionOption: 'patch'
+    verbosity: 'Debug'
 
 - task: PublishBuildArtifacts@1
