@@ -19,3 +19,9 @@ steps:
     npm install
     npm run build
   displayName: 'npm install and build'
+
+- script: |
+    git checkout development
+    git checkout -b sync/branch
+    git push origin sync/branch
+  displayName: Git checkout develop sync branch
