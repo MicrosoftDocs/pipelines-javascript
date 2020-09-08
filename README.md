@@ -1,5 +1,4 @@
-[![Build Status](https://dev.azure.com/tgraf/tgraf/_apis/build/status/TimGraf.pipelines-javascript?branchName=master)](https://dev.azure.com/tgraf/tgraf/_build/latest?definitionId=1&branchName=master)
-
+![Build Status](https://dev.azure.com/tgraf/tgraf/_apis/build/status/TimGraf.pipelines-javascript?branchName=master)
 
 # Sample NodeJS application for Azure Pipelines docs
 
