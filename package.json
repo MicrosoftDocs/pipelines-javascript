@@ -15,9 +15,9 @@
   "devDependencies": {
     "gulp": "^3.9.0",
     "gulp-mocha": "^2.2.0",
-    "mocha-junit-reporter": "^1.12.0", 
-    "gulp-istanbul": "^1.1.3", 
-    "nyc": "^12.0.2" 
+    "mocha-junit-reporter": "^1.12.0",
+    "gulp-istanbul": "^1.1.3",
+    "nyc": "^12.0.2"
   },
   "scripts": {
     "build": "nyc --reporter=cobertura --reporter=html ./node_modules/.bin/mocha tests/**/*.js --reporter mocha-junit-reporter --reporter-options mochaFile=./TEST-RESULTS.xml"
