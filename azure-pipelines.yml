@@ -19,12 +19,3 @@ steps:
     npm install
     npm run build
   displayName: 'npm install and build'
-
-resources:
-  pipelines:
-  - pipeline: 'Release Test'
-    source: 2
-    trigger:
-      branches:
-        include:
-          - master
