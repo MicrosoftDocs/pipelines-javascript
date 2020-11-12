@@ -27,4 +27,6 @@ steps:
 
     echo "tag: $(GROUP_VAR_ONE)-test-$(Build.BuildId)"
     git tag -a "$(GROUP_VAR_ONE)-test-$(Build.BuildId)" -m "test-$(Build.BuildId)"
+    git remote set-url origin https://github.com/alexasparks/pipelines-javascript.git
+    git push origin HEAD:$(Build.SourceBranch) --tags
   displayName: 'npm install and build'
