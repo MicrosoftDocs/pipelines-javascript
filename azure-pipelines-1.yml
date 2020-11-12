@@ -19,3 +19,10 @@ steps:
     npm install
     npm run build
   displayName: 'npm install and build' # install
+
+resources:
+  pipelines:
+  - pipeline: alexasparks.pipelines-javascript
+    project: 'Triggers Test'
+    source: alexasparks.pipelines-javascript
+    trigger: true
