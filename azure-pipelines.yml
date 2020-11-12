@@ -9,16 +9,14 @@ trigger:
 pool:
   vmImage: 'ubuntu-latest'
 
+variables:
+- group: Test Group Var
+
 steps:
 - task: NodeTool@0
   inputs:
     versionSpec: '10.x'
   displayName: 'Install Node.js'
-
-variables:
-- group: Test Group Var
-  name: GROUP_VAR_ONE
-  value: $(variables.GROUP_VAR_ONE)
 
 - script: |
     npm install
