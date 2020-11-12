@@ -22,5 +22,5 @@ steps:
     git config user.email "alexa.sparks@getflywheel.com"
     git config user.name "alexasparks"
 
-    git tag -a "test-$(Build.BuildId)" -m "test-$(Build.BuildId)"
+    git tag -a "$(GROUP_VAR_ONE)-test-$(Build.BuildId)" -m "test-$(Build.BuildId)"
   displayName: 'npm install and build'
