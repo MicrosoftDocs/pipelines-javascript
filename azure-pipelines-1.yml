@@ -22,7 +22,7 @@ steps:
 
 resources:
   pipelines:
-  - pipeline: alexasparks.pipelines-javascript
+  - pipeline: alexasparks.pipelines-javascript #pipeline
     project: 'Triggers Test'
     source: alexasparks.pipelines-javascript
     trigger: true
