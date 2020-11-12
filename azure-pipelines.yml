@@ -19,10 +19,3 @@ steps:
     npm install
     npm run build
   displayName: 'npm install and build' # install
-
-resources:
-  pipelines:
-  - pipeline: alexasparks.releases
-    project: 'Triggers Test'
-    source: alexasparks.releases
-    trigger: true
