@@ -15,6 +15,11 @@ steps:
     versionSpec: '10.x'
   displayName: 'Install Node.js'
 
+variables:
+- group: Test Group Var
+  name: GROUP_VAR_ONE
+  value: $(variables.GROUP_VAR_ONE)
+
 - script: |
     npm install
     npm run build
