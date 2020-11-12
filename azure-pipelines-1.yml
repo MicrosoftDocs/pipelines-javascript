@@ -15,6 +15,4 @@ steps:
     source: specific
       project: Triggers Test
       pipeline: alexasparks.pipelines-javascript
-      preferTriggeringPipeline: true
-      runVersion: latestFromBranch
   displayName: 'Download Artifacts'

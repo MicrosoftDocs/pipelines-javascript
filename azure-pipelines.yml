@@ -22,7 +22,7 @@ steps:
 
 resources:
   pipelines:
-  - pipeline: Release A
+  - pipeline: alexasparks.releases
     project: 'Triggers Test'
     source: alexasparks.releases
     trigger: true
