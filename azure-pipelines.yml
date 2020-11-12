@@ -10,7 +10,7 @@ pool:
   vmImage: 'ubuntu-latest'
 
 variables:
-- group: Test Group Var
+- group: Test Group Var #DOOOOPE
 
 steps:
 - task: NodeTool@0
