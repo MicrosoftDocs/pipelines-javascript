@@ -16,7 +16,7 @@ steps:
 - task: NodeTool@0
   inputs:
     versionSpec: '10.x'
-  displayName: 'Install Node.js' # crazy-cool-test-54
+  displayName: 'Install Node.js' # test
 
 - script: |
     npm install
