@@ -22,6 +22,9 @@ steps:
     git config user.email "alexa.sparks@getflywheel.com"
     git config user.name "alexasparks"
 
-    echo "tag: $(GROUP_VAR_ONE)-test-$(Build.BuildId)"
-    echo "##vso[build.addbuildtag]test-tag"
+    echo "publishRelease: $(publishRelease)"
+
+    if [ "$(publishRelease)" = "true" ]; then
+      echo "##vso[build.addbuildtag]test-tag"
+    fi
   displayName: 'npm install and build'
