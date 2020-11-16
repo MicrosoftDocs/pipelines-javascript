@@ -23,5 +23,5 @@ steps:
     git config user.name "alexasparks"
 
     echo "tag: $(GROUP_VAR_ONE)-test-$(Build.BuildId)"
-    echo ##vso[build.addbuildtag]test-tag
+    echo "##vso[build.addbuildtag]test-tag"
   displayName: 'npm install and build'
