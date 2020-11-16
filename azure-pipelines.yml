@@ -19,9 +19,6 @@ steps:
   displayName: 'Install Node.js' # test
 
 - script: |
-    npm install
-    npm run build
-
     git config user.email "alexa.sparks@getflywheel.com"
     git config user.name "alexasparks"
 
