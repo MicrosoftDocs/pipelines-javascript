@@ -22,6 +22,6 @@ steps:
     echo "publishRelease: $(publishRelease)"
 
     if [ "$(publishRelease)" = "true" ]; then
-      echo "##vso[build.addbuildtag]test-tag"
+      echo "##vso[build.addbuildtag]test"
     fi
   displayName: 'npm install and build'
