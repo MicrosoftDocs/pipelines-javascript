@@ -14,4 +14,4 @@ app.get('/', (req, res) => {
 
 var port = process.env.PORT||PORT;
 app.listen(port);
-console.log(`Running on http://${HOST}:${PORT}`);
+console.log(`Running on the http://${HOST}:${PORT}`);
