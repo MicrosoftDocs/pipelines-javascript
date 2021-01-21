@@ -15,8 +15,47 @@ steps:
   inputs:
     versionSpec: '14.x'
   displayName: 'Install Node.js'
+- task: Npm@1
+  inputs:
+  command: 'install'
+- task: Npm@1
+  inputs:
+    customEndpoint: <Name of npm service connection>
+- task: npmAuthenticate@0
+  inputs:
+    customEndpoint: <Name of npm service connection>
+- task: PublishTestResults@2
+  condition: succeededOrFailed()
+  inputs:
+    testRunner: JUnit
+    testResultsFiles: '**/TEST-RESULTS.xml'
+- task: PublishCodeCoverageResults@1
+  inputs: 
+    codeCoverageTool: Cobertura # or JaCoCo
+    summaryFileLocation: '$(System.DefaultWorkingDirectory)/**/*coverage.xml'
+    reportDirectory: '$(System.DefaultWorkingDirectory)/**/coverage'
+ - script: |
+    npm install -g @angular/cli
+    npm install
+    ng build --prod  
 
+- script: |
+    npm install --only=dev
+    npm run build
+- script: npm install --only=dev
+- script: npx mocha
+- script: npm install -g @angular/cli
+- script: npm install
+- script: yarn install
+- script: npm run compile
+- script: tsc --target ES6 --strict true --project tsconfigs/production.json
+- script: mocha test --reporter mocha-junit-reporter
+- script: npm test
 - script: |
     npm install
     npm run build
+ displayName: 'npm install and build'
+- script: webpack
+- script: npm run build
+
   displayName: 'npm install and build'
