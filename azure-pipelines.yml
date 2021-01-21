@@ -34,10 +34,50 @@ steps:
     codeCoverageTool: Cobertura # or JaCoCo
     summaryFileLocation: '$(System.DefaultWorkingDirectory)/**/*coverage.xml'
     reportDirectory: '$(System.DefaultWorkingDirectory)/**/coverage'
+ - task: npmAuthenticate@0
+  inputs:
+    customEndpoint: <Name of npm service connection>
+ - task: PublishTestResults@2
+  inputs:
+    testResultsFiles: '**/TEST-RESULTS.xml'
+    testRunTitle: 'Test results for JavaScript using gulp'
+ - task: PublishCodeCoverageResults@1
+  inputs: 
+    codeCoverageTool: Cobertura
+    summaryFileLocation: '$(System.DefaultWorkingDirectory)/**/*coverage.xml'
+    reportDirectory: '$(System.DefaultWorkingDirectory)/**/coverage'
+ - task: npmAuthenticate@0
+  inputs:
+    customEndpoint: <Name of npm service connection>
+
+- script: grunt                      # include any additional options that are needed
+ 
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(System.DefaultWorkingDirectory)'
+- script: gulp                       # include any additional options that are needed
+- task: CopyFiles@2
+  inputs:
+    SourceFolder: '$(System.DefaultWorkingDirectory)'
+    Contents: |
+      **\*.js
+      package.json
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+
+- task: PublishBuildArtifacts@1
  - script: |
     npm install -g @angular/cli
     npm install
     ng build --prod  
+- task: Npm@1
+  inputs:
+     command: publish
+     publishRegistry: useExternalRegistry
+     publishEndpoint: https://my.npmregistry.com
+- task: ArchiveFiles@2
+  inputs:
+    rootFolderOrFile: '$(System.DefaultWorkingDirectory)'
+    includeRootFolder: false
 
 - script: |
     npm install --only=dev
@@ -57,5 +97,24 @@ steps:
  displayName: 'npm install and build'
 - script: webpack
 - script: npm run build
+- script: |
+    npm install webpack webpack-cli --save-dev
+    npx webpack --config webpack.config.js
+- script: gulp                       # include any additional options that are needed
+- script: grunt                      # include any additional options that are needed
+- script: npm publish
 
   displayName: 'npm install and build'
+  
+  steps:
+- bash: |
+    NODE_VERSION=12  # or whatever your preferred version is
+    npm config delete prefix  # avoid a warning
+    . ${NVM_DIR}/nvm.sh
+    nvm use ${NODE_VERSION}
+    nvm alias default ${NODE_VERSION}
+    VERSION_PATH="$(nvm_version_path ${NODE_VERSION})"
+    echo "##vso[task.prependPath]$VERSION_PATH"
+- bash: |
+    . ${NVM_DIR}/nvm.sh
+    nvm <command>
