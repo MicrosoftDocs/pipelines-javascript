@@ -5,6 +5,9 @@
 
 trigger:
 - master
+  paths:
+    exclude:
+    - README.md
 
 pool:
   vmImage: ubuntu-latest
