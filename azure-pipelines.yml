@@ -4,7 +4,13 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
 
 trigger:
-- master
+  batch: true
+  branches:
+   include:
+     - master
+  paths:
+    exclude:
+    - README.md
 
 pool:
   vmImage: ubuntu-latest
