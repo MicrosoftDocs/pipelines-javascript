@@ -1,0 +1,22 @@
+pool:
+  vmImage: 'ubuntu-latest' # examples of other options: 'macOS-10.15', 'windows-latest'
+Location: C:\msys64
+
+Note: MSYS2 is pre-installed on image but not added to PATH.
+
+Databases
+
+PostgreSQL
+
+Property	  Value
+
+ServiceName	  postgresql-x64-14
+Version	14.0
+ServiceStatus	  Stopped
+ServiceStartType	  Disabled
+EnvironmentVariables	  PGBIN=C:\Program Files\PostgreSQL\14\bin
+PGDATA. =  C:\Program Files\PostgreSQL\14\data
+PGROOT. =  C:\Program Files\PostgreSQL\14
+Path	  C:\Program Files\PostgreSQL\14
+UserName	  postgres
+Password	  root
