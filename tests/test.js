@@ -1,4 +1,4 @@
-var assert = require('assert');
+ assert = require('assert');
 
 describe('String', function () {
     describe('#indexOf', function () {
