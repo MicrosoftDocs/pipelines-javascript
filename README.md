@@ -1,3 +1,5 @@
+[![Build Status](https://dev.azure.com/silviuandrica/WithMicrosoftAccount/_apis/build/status/silviuandrica.pipelines-javascript?branchName=master)](https://dev.azure.com/silviuandrica/WithMicrosoftAccount/_build/latest?definitionId=2&branchName=master)
+
 # Sample NodeJS application for Azure Pipelines docs
 
 For information on how to set up a pipeline for this repository, see [Create your first pipeline](https://docs.microsoft.com/azure/devops/pipelines/get-started-yaml?view=azure-devops).
@@ -33,5 +35,3 @@ Privacy information can be found at https://privacy.microsoft.com/en-us/
 
 Microsoft and any contributors reserve all others rights, whether under their respective copyrights, patents,
 or trademarks, whether by implication, estoppel or otherwise.
-
-This should trigger a new pipeline run. Indeed, it did. Now lets make a branch out of it.
