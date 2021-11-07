@@ -1,39 +1,48 @@
-# When manually running the pipeline, you can select whether it
-# succeeds or fails.
-parameters:
-- name: succeed
-  displayName: Succeed or fail
-  type: boolean
-  default: false
-
 trigger:
 - main
 
+pr: none
+
+strategy:
+   matrix:
+     linux:
+       imageName: "linux-latest"
+       nodeVersion: "10.x"
+     windows:
+       imageName: "windows-latest"
+       nodeVersion: "12.x"
+     macos:
+       imageName: "macos-latest"
+       nodeVersion: "12.x"
+   maxParallel: 3
+
 pool:
-  vmImage: ubuntu-latest
+   vmImage: $(imageName)
 
 jobs:
-- job: Work
-  steps:
-  - script: echo Hello, world!
-    displayName: 'Run a one-line script'
+ - job: Work
+   steps:
+    - task: NodeTool@0
+      inputs:
+      versionSpec: $(nodeVersion)
+      displayName: 'Install Node.js'
 
-  # This malformed command causes the job to fail
-  # Only run this command if the succeed variable is set to false
-  - script: git clone malformed input
-    condition: eq(${{ parameters.succeed }}, false)
+    - script: |
+        npm install
+        npm run build
+        displayName: 'npm install and build'
 
-# This job creates a work item, and only runs if the previous job failed
-- job: ErrorHandler
-  dependsOn: Work
-  condition: failed()
-  steps: 
-  - bash: |
-      az boards work-item create \
-        --title "Build $(build.buildNumber) failed" \
-        --type bug \
-        --org $(System.TeamFoundationCollectionUri) \
-        --project $(System.TeamProject)
-    env: 
-      AZURE_DEVOPS_EXT_PAT: $(System.AccessToken)
-    displayName: 'Create work item on failure'
+ # This job creates a work item, and only runs if the previous job failed
+ - job: ErrorHandler
+   dependsOn: Work
+   condition: failed()
+   steps: 
+   - bash: |
+       az boards work-item create \
+         --title "Build $(build.buildNumber) failed" \
+         --type bug \
+         --org $(System.TeamFoundationCollectionUri) \
+         --project $(System.TeamProject)
+     env: 
+       AZURE_DEVOPS_EXT_PAT: $(System.AccessToken)
+     displayName: 'Create work item on failure'
