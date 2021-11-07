@@ -1,40 +1,3 @@
-# Node.js
-# Build a general Node.js project with npm.
-# Add steps that analyze code, save build artifacts, deploy, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
-
-trigger:
-- master
-
-pr: none
-
-strategy:
-  matrix:
-    linux:
-      imageName: "linux-latest"
-      nodeVersion: "10.x"
-    windows:
-      imageName: "windows-latest"
-      nodeVersion: "12.x"
-    macos:
-      imageName: "macos-latest"
-      nodeVersion: "12.x"
-  maxParallel: 3
-
-pool:
-  vmImage: $(imageName)
-
-# steps:
-# - task: NodeTool@0
-#   inputs:
-#     versionSpec: $(nodeVersion)
-#   displayName: 'Install Node.js'
-
-# - script: |
-#     npm install
-#     npm run build
-#   displayName: 'npm install and build'
-
 # When manually running the pipeline, you can select whether it
 # succeeds or fails.
 parameters:
@@ -42,6 +5,12 @@ parameters:
   displayName: Succeed or fail
   type: boolean
   default: false
+
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
 
 jobs:
 - job: Work
