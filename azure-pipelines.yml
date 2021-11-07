@@ -16,12 +16,11 @@ strategy:
        nodeVersion: "12.x"
    maxParallel: 3
 
-pool:
-   vmImage: $(imageName)
-
 jobs:
- - job: Work
-   steps:
+- job: Work
+  pool:
+    vmImage: $(imageName)
+  steps:
     - task: NodeTool@0
       inputs:
         versionSpec: $(nodeVersion)
