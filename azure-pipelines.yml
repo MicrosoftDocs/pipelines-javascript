@@ -24,13 +24,13 @@ jobs:
    steps:
     - task: NodeTool@0
       inputs:
-      versionSpec: $(nodeVersion)
+        versionSpec: $(nodeVersion)
       displayName: 'Install Node.js'
 
     - script: |
         npm install
         npm run build
-        displayName: 'npm install and build'
+      displayName: 'npm install and build'
 
  # This job creates a work item, and only runs if the previous job failed
  - job: ErrorHandler
