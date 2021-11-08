@@ -6,7 +6,7 @@ pr: none
 jobs:
 - job: Work
   pool:
-    vmImage: linux-latest
+    vmImage: Ubuntu-latest
   steps:
     - task: NodeTool@0
       inputs:
