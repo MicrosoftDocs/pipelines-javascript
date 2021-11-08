@@ -4,31 +4,10 @@ trigger:
 pr: none
 
 jobs:
-- job: Work
-  pool:
-    vmImage: Ubuntu-latest
+- job: MyJob
+  displayName: My First Job
+  continueOnError: true
+  workspace:
+    clean: outputs
   steps:
-    - task: NodeTool@0
-      inputs:
-        versionSpec: 10.x
-      displayName: 'Install Node.js'
-
-    - script: |
-        npm install
-        npm run build
-      displayName: 'npm install and build'
-
- # This job creates a work item, and only runs if the previous job failed
-- job: ErrorHandler
-  dependsOn: Work
-  condition: failed()
-  steps: 
-  - bash: |
-       az boards work-item create \
-         --title "Build $(build.buildNumber) failed" \
-         --type bug \
-         --org $(System.TeamFoundationCollectionUri) \
-         --project $(System.TeamProject)
-    env: 
-       AZURE_DEVOPS_EXT_PAT: $(System.AccessToken)
-    displayName: 'Create work item on failure'
+  - script: echo My first job
