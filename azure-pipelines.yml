@@ -10,4 +10,10 @@ jobs:
   workspace:
     clean: outputs
   steps:
-  - script: echo My first job
+  - task: Bash@3
+    inputs:
+      targetType: 'inline'
+      script: |
+        # Write your commands here
+      
+        echo 'Hello world'
