@@ -11,6 +11,7 @@ stages:
   displayName: 'build stage'
   jobs:
     - job:
+      displayName: 'Build and unit test the app'
       pool: Default
       steps:
       - task: NodeTool@0
@@ -39,10 +40,12 @@ stages:
           reportDirectory: '$(System.DefaultWorkingDirectory)/**/coverage'
 
 - stage: deploy
+  dependsOn: build
+  condition: succeeded()
   displayName: 'deploy stage'
   jobs:
     - deployment: DeployWebApp
-      displayName: 'deploy web app'
+      displayName: 'Deploy web app'
       pool:
         vmImage: 'ubuntu-latest'
       environment: 'Production'
