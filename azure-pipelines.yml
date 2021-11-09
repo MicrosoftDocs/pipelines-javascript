@@ -18,4 +18,4 @@ jobs:
       script: |
         # Write your commands here
       
-        echo 'Hello world'
+        echo 'Hello world, this is Silviu, and this is fun'
