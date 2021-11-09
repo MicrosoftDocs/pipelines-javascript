@@ -20,6 +20,9 @@ steps:
 - script: npm run build
   displayName: 'npm build'
 
+- script: npm install --global gulp-cli
+  displayName: 'install gulp'
+
 - script: gulp
 - task: PublishTestResults@2
   inputs:
