@@ -3,6 +3,8 @@ trigger:
 
 pr: none
 
+pool: Default
+
 jobs:
 - job: MyJob
   displayName: My First Job
