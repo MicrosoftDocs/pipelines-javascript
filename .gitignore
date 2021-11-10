@@ -29,3 +29,4 @@ node_modules
 /package-lock.json
 
 TEST-RESULTS.xml
+.nyc_output
