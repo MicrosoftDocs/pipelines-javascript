@@ -7,7 +7,14 @@ trigger:
 - master
 
 stages:
+- stage: fail
+  jobs:
+    - job: 
+      displayName: 'job that fails'
+      steps:
+        - script: false
 - stage: build
+  dependsOn: []
   displayName: 'build stage'
   jobs:
     - job:
@@ -39,12 +46,6 @@ stages:
           codeCoverageTool: Cobertura
           summaryFileLocation: '$(System.DefaultWorkingDirectory)/**/*coverage.xml'
           reportDirectory: '$(System.DefaultWorkingDirectory)/**/coverage'
-- stage: fail
-  jobs:
-    - job: 
-      displayName: 'job that fails'
-      steps:
-        - script: false
 - stage: deploy
   displayName: 'deploy stage'
   jobs:
