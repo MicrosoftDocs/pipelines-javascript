@@ -26,7 +26,7 @@ stages:
       displayName: 'Build and unit test the app'
       pool: Default
       steps:
-      - script: echo 'Build.DefinitionName: $(Build.DefinitionName) Build.BuildId: $(Build.BuildNumber)'
+      - script: "echo 'Build.DefinitionName: $(Build.DefinitionName) Build.BuildId: $(Build.BuildNumber)'"
       - task: NodeTool@0
         inputs:
           versionSpec: '10.x'
