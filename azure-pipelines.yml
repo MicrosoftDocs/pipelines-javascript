@@ -7,15 +7,7 @@ trigger:
 - master
 
 stages:
-- stage: fail
-  jobs:
-    - job: 
-      displayName: 'job that fails'
-      steps:
-        - script: echo My owner is $OWNER
-        - script: false
 - stage: build
-  dependsOn: []
   displayName: 'build stage'
   jobs:
     - job:
