@@ -6,7 +6,7 @@
 trigger:
 - master
 
-stagess:
+stages:
 - stage: fail
   jobs:
     - job: 
