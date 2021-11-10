@@ -43,8 +43,9 @@ stages:
 - stage: publish
   displayName: 'publish artifact'
   jobs:
-    - job: 
-        steps:
+    - job:
+      displayName: 'publish job' 
+      steps:
         - publish: server.js
           artifact: ServerApp
           displayName: 'publish artifact step'
