@@ -3,7 +3,18 @@
 # Add steps that analyze code, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
 
-name: Silviu's pipeline $(Date:yyyyMMdd)$(Rev:.r)
+variables:
+  ${{ if eq(variables['Build.Reason'], 'PullRequest') }}:
+    why: pr
+  ${{ elseif eq(variables['Build.Reason'], 'Manual' ) }}:
+    why: manual
+  ${{ elseif eq(variables['Build.Reason'], 'IndividualCI' ) }}:
+    why: indivci 
+  ${{ else }}:
+    why: other
+
+name: $(TeamProject)_$(SourceBranchName)_$(why)_$(Date:yyyyMMdd)$(Rev:.r)
+
 trigger:
 - master
 
@@ -15,6 +26,7 @@ stages:
       displayName: 'Build and unit test the app'
       pool: Default
       steps:
+      - script: echo '$(Build.BuildNumber)'
       - task: NodeTool@0
         inputs:
           versionSpec: '10.x'
