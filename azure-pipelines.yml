@@ -12,7 +12,7 @@ stages:
     - job: 
       displayName: 'job that fails'
       steps:
-        - script: My owner is $OWNER
+        - script: echo My owner is $OWNER
         - script: false
 - stage: build
   dependsOn: []
