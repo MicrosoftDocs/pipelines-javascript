@@ -13,7 +13,7 @@ variables:
   ${{ else }}:
     why: other
 
-name: $(TeamProject)_$(SourceBranchName)_$(why)_$(Date:yyyyMMdd)$(Rev:.r)
+name: $(TeamProject)_$(Build.DefinitionName)_$(Build.BuildId)_$(SourceBranchName)_$(why)_$(Date:yyyyMMdd)$(Rev:.r)
 
 trigger:
 - master
@@ -26,7 +26,7 @@ stages:
       displayName: 'Build and unit test the app'
       pool: Default
       steps:
-      - script: echo '$(Build.BuildNumber)'
+      - script: echo 'Build.DefinitionName: $(Build.DefinitionName) Build.BuildId: $(Build.BuildNumber)'
       - task: NodeTool@0
         inputs:
           versionSpec: '10.x'
