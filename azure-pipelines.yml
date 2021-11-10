@@ -39,10 +39,13 @@ stages:
           codeCoverageTool: Cobertura
           summaryFileLocation: '$(System.DefaultWorkingDirectory)/**/*coverage.xml'
           reportDirectory: '$(System.DefaultWorkingDirectory)/**/coverage'
-
+- stage: fail
+  jobs:
+    - job: 
+      displayName: 'job that fails'
+      steps:
+        - script: false
 - stage: deploy
-  dependsOn: []
-  condition: succeeded()
   displayName: 'deploy stage'
   jobs:
     - deployment: DeployWebApp
