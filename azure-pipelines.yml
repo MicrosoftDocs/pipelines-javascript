@@ -29,5 +29,5 @@ stages:
         vmImage: 'macos-latest'
   - template: job.template.yml
     parameters:
-      name: Local agent
+      name: LocalAgent
       pool: Default
