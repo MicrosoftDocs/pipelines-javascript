@@ -4,10 +4,32 @@ parameters:
   sign: false
 
 jobs:
-- job: ${{ parameters.name }}
-  pool: ${{ parameters.pool }}
-  steps:
-  - script: npm install
-  - script: npm test
-  - ${{ if eq(parameters.sign, 'true') }}:
-    - script: sign
+  - job: ${{ parameters.name }}
+    displayName: 'Build and unit test the app on ${{ parameters.name }}'
+    pool: ${{ parameters.pool }}
+    steps:
+    - script: "echo Build.DefinitionName: $(Build.DefinitionName) Build.BuildId: $(Build.BuildId)"
+    - task: NodeTool@0
+      inputs:
+        versionSpec: '10.x'
+      displayName: 'Install Node.js'
+
+    - script: npm install
+      displayName: 'npm install'
+    - script: npm run build
+      displayName: 'npm build'
+
+    - script: npm install --global gulp-cli
+      displayName: 'install gulp'
+
+    - script: gulp
+    - task: PublishTestResults@2
+      inputs:
+        testRunner: JUnit
+        testResultsFiles: '**/TEST-RESULTS.xml'
+        testRunTitle: 'Test results for JavaScript using gulp'
+    - task: PublishCodeCoverageResults@1
+      inputs: 
+        codeCoverageTool: Cobertura
+        summaryFileLocation: '$(System.DefaultWorkingDirectory)/**/*coverage.xml'
+        reportDirectory: '$(System.DefaultWorkingDirectory)/**/coverage'
