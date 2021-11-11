@@ -10,56 +10,21 @@ stages:
 - stage: build
   displayName: 'build stage'
   jobs:
-    - job:
-      displayName: 'Build and unit test the app'
-      pool: Default
-      steps:
-      - script: "echo Build.DefinitionName: $(Build.DefinitionName) Build.BuildId: $(Build.BuildId)"
-      - task: NodeTool@0
-        inputs:
-          versionSpec: '10.x'
-        displayName: 'Install Node.js'
-
-      - script: npm install
-        displayName: 'npm install'
-      - script: npm run build
-        displayName: 'npm build'
-
-      - script: npm install --global gulp-cli
-        displayName: 'install gulp'
-
-      - script: gulp
-      - task: PublishTestResults@2
-        inputs:
-          testRunner: JUnit
-          testResultsFiles: '**/TEST-RESULTS.xml'
-          testRunTitle: 'Test results for JavaScript using gulp'
-      - task: PublishCodeCoverageResults@1
-        inputs: 
-          codeCoverageTool: Cobertura
-          summaryFileLocation: '$(System.DefaultWorkingDirectory)/**/*coverage.xml'
-          reportDirectory: '$(System.DefaultWorkingDirectory)/**/coverage'
-
-- stage: publish
-  displayName: 'publish artifact'
-  jobs:
-    - job:
-      displayName: 'publish job' 
-      steps:
-        - publish: server.js
-          artifact: ServerApp
-          displayName: 'publish artifact step'
-          
-- stage: deploy
-  displayName: 'deploy stage'
-  jobs:
-    - deployment: DeployWebApp
-      displayName: 'Deploy web app'
+  - template: job.template.yml
+    parameters:
+      name: Linux
       pool:
         vmImage: 'ubuntu-latest'
-      environment: 'Production'
-      strategy:
-        runOnce:
-          deploy:
-            steps:
-              - script: echo hello, world
+  
+  - template: job.template.yml
+    parameters:
+      name: Windows
+      pool:
+        vmImage: 'windows-latest'
+
+  - template: job.template.yml
+    parameters:
+      name: macOS
+      pool:
+        vmImage: 'macos-latest'
+
