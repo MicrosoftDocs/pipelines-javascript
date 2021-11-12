@@ -8,7 +8,6 @@ jobs:
     displayName: 'Build and unit test the app on ${{ parameters.name }}'
     pool: ${{ parameters.pool }}
     steps:
-    - script: "echo Build.DefinitionName: $(Build.DefinitionName) Build.BuildId: $(Build.BuildId)"
     - task: NodeTool@0
       inputs:
         versionSpec: '10.x'
