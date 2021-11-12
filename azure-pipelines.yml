@@ -11,7 +11,7 @@ pr: none
 jobs:
 - template: job.template.yml
   parameters:
-    names: Linux
+    name: Linux
     pool:
       vmImage: 'ubuntu-latest'
 
