@@ -6,22 +6,19 @@
 trigger:
 - master
 
-stages:
-- stage: build
-  displayName: 'build stage'
-  jobs:
-  - template: job.template.yml
-    parameters:
-      name: Linux
-      pool:
-        vmImage: 'ubuntu-latest'
+jobs:
+- template: job.template.yml
+  parameters:
+    name: Linux
+    pool:
+      vmImage: 'ubuntu-latest'
 
-  - template: job.template.yml
-    parameters:
-      name: macOS
-      pool:
-        vmImage: 'macos-latest'
-  - template: job.template.yml
-    parameters:
-      name: LocalAgent
-      pool: Default
+- template: job.template.yml
+  parameters:
+    name: macOS
+    pool:
+      vmImage: 'macos-latest'
+- template: job.template.yml
+  parameters:
+    name: LocalAgent
+    pool: Default
