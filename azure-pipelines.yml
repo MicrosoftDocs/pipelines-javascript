@@ -15,12 +15,6 @@ stages:
       name: Linux
       pool:
         vmImage: 'ubuntu-latest'
-  
-  - template: job.template.yml
-    parameters:
-      name: Windows
-      pool:
-        vmImage: 'windows-latest'
 
   - template: job.template.yml
     parameters:
