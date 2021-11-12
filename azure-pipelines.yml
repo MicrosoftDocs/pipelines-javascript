@@ -6,6 +6,8 @@
 trigger:
 - master
 
+pr: none
+
 jobs:
 - template: job.template.yml
   parameters:
