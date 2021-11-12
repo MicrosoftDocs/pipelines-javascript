@@ -9,7 +9,7 @@ trigger:
 jobs:
 - template: job.template.yml
   parameters:
-    name: Linux
+    names: Linux
     pool:
       vmImage: 'ubuntu-latest'
 
