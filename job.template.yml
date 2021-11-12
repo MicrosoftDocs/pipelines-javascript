@@ -1,7 +1,11 @@
 parameters:
-  name: ''
-  pool: ''
-  sign: false
+  - name: name
+    type: string
+  - name: pool
+    type: string
+  - name: sign
+    type: boolean
+    default: false
 
 jobs:
   - job: ${{ parameters.name }}
