@@ -2,7 +2,7 @@ parameters:
   - name: name
     type: string
   - name: pool
-    type: string
+    type: object
   - name: sign
     type: boolean
     default: false
