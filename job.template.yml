@@ -26,6 +26,7 @@ jobs:
       displayName: 'install gulp'
 
     - script: gulp
+    
     - task: PublishTestResults@2
       inputs:
         testRunner: JUnit
