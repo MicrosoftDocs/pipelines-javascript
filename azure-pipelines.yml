@@ -22,7 +22,6 @@ extends:
     - template: car.yml
       parameters:
         auto: false
-        wheels: 3
         brand: toyota
 
     - ${{ if parameters.buildApp }}:
