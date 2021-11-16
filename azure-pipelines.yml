@@ -13,7 +13,6 @@ jobs:
   parameters:
     auto: false
     wheels: 3
-    type: coupé
     brand: toyota
 
 - template: job.template.yml
@@ -27,6 +26,7 @@ jobs:
     name: macOS
     pool:
       vmImage: 'macos-latest'
+      
 - template: job.template.yml
   parameters:
     name: LocalAgent
