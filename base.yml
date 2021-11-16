@@ -8,7 +8,7 @@ parameters:
 jobs:
   - job: 
     steps:  
-      - script: echo "Welcome to $(name)"
+      - script: echo "Welcome to ${{ parameters.name }}"
         displayName: Welcome message
   - ${{ each job in parameters.jobs }}:
     - ${{ job }}
