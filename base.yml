@@ -2,7 +2,13 @@ parameters:
 - name: name
   type: string
   default: base
-  
+- name: jobs
+  type: jobList
 
-- script: echo "Welcome to $(name)"
-  displayName: Welcome message
+jobs:
+  - job: 
+    steps:  
+      - script: echo "Welcome to $(name)"
+        displayName: Welcome message
+  - ${{ each job in parameters.jobs }}:
+    - ${{ job.key }} : ${{ job.value }}
