@@ -1,7 +1,6 @@
 parameters:
   - name: buildApp
     displayName: Build web app?
-    default: true
     type: boolean
     
 jobs:
