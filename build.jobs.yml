@@ -9,9 +9,9 @@ jobs:
   steps:
     - script: echo Hello, world
 - template: car.yml
-      parameters:
-        auto: false
-        brand: toyota
+  parameters:
+    auto: false
+    brand: toyota
 
 # - ${{ if parameters.buildApp }}:
 #   - template: job.template.yml
