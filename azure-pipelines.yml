@@ -14,33 +14,20 @@ trigger:
 
 pr: none
 
-jobs:
-- job: 
-  steps:
-    - script: echo $(Build.BuildId)
-    - script: echo ${{ variables.Build.BuildId }}
+extends: 
+  template: base.yml
+  parameters:
+    name: 'Test1'
+    jobs:
+    - template: car.yml
+      parameters:
+        auto: false
+        wheels: 3
+        brand: toyota
 
-- ${{ if gt(variables.Build.BuildId, 0) }}:
-  - template: car.yml
-    parameters:
-      auto: false
-      wheels: 3
-      brand: toyota
-
-- ${{ if parameters.buildApp }}:
-  - template: job.template.yml
-    parameters:
-      name: Linux
-      pool:
-        vmImage: 'ubuntu-latest'
-
-  - template: job.template.yml
-    parameters:
-      name: macOS
-      pool:
-        vmImage: 'macos-latest'
-        
-  - template: job.template.yml
-    parameters:
-      name: LocalAgent
-      pool: Default
+    - ${{ if parameters.buildApp }}:
+      - template: job.template.yml
+        parameters:
+          name: Linux
+          pool:
+            vmImage: 'ubuntu-latest'
