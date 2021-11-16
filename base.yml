@@ -2,8 +2,6 @@ parameters:
 - name: name
   type: string
   default: base
-- name: jobs
-  type: jobList
   
 jobs:
   - job: 
