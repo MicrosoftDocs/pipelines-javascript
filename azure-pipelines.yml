@@ -15,11 +15,16 @@ trigger:
 pr: none
 
 jobs:
-- template: car.yml
-  parameters:
-    auto: false
-    wheels: 3
-    brand: toyota
+- job: 
+  steps:
+    - script: "echo ${{ variables.Build.BuildId }}"
+
+- ${{ if gt(variables.Build.BuildId, 0) }}:
+  - template: car.yml
+    parameters:
+      auto: false
+      wheels: 3
+      brand: toyota
 
 - ${{ if parameters.buildApp }}:
   - template: job.template.yml
