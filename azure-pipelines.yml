@@ -9,6 +9,13 @@ trigger:
 pr: none
 
 jobs:
+- template: car.yml
+  parameters:
+    auto: false
+    wheels: 3
+    brand: toyota
+
+
 - template: job.template.yml
   parameters:
     name: Linux
