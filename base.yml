@@ -10,7 +10,7 @@ jobs:
     steps:  
       - script: echo "Welcome to ${{ parameters.name }}"
         displayName: Welcome message
-  - template: build.jobs@self
+  - template: build.jobs.yml@self
   - job:
     steps:
       - script: echo "Goodbye from ${{ parameters.name }}"
