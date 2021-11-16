@@ -9,8 +9,9 @@ trigger:
 pr: none
 
 parameters:
-  - name: silviu
+  - name: name
     type: string
+    default: Silviu
 
 extends:
   template: base.yml
