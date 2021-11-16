@@ -1,0 +1,4 @@
+jobs:
+- job:
+  steps:
+    - script: echo Hello, worls
