@@ -1,0 +1,20 @@
+parameters:
+- name: auto
+  type: boolean
+  default: false
+- name: wheels
+  type: number
+  default: 4
+- name: brand
+  type: string
+  values:
+  - testa
+  - toyota
+  - volkswagen
+
+jobs:
+- job: CarJob
+  steps:
+  - script: "echo My car is auto: ${{ parameters.auto }}"
+  - script: echo - Brand ${{ parameters.brand }}
+  - script: echo - ${{ parameters.wheels }} wheels
