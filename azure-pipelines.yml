@@ -3,6 +3,12 @@
 # Add steps that analyze code, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
 
+parameters:
+  - name: buildApp
+    displayName: Build web app?
+    default: false
+    type: boolean
+    
 trigger:
 - master
 
@@ -15,19 +21,20 @@ jobs:
     wheels: 3
     brand: toyota
 
-- template: job.template.yml
-  parameters:
-    name: Linux
-    pool:
-      vmImage: 'ubuntu-latest'
+- ${{ if parameters.buildApp }}:
+  - template: job.template.yml
+    parameters:
+      name: Linux
+      pool:
+        vmImage: 'ubuntu-latest'
 
-- template: job.template.yml
-  parameters:
-    name: macOS
-    pool:
-      vmImage: 'macos-latest'
-      
-- template: job.template.yml
-  parameters:
-    name: LocalAgent
-    pool: Default
+  - template: job.template.yml
+    parameters:
+      name: macOS
+      pool:
+        vmImage: 'macos-latest'
+        
+  - template: job.template.yml
+    parameters:
+      name: LocalAgent
+      pool: Default
