@@ -10,5 +10,8 @@ jobs:
     steps:  
       - script: echo "Welcome to ${{ parameters.name }}"
         displayName: Welcome message
-  - ${{ each job in parameters.jobs }}:
-    - ${{ job }}
+  - template: build.jobs@self
+  - job:
+    steps:
+      - script: echo "Goodbye from ${{ parameters.name }}"
+      displayName: Goodbye message
