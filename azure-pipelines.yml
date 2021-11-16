@@ -8,7 +8,12 @@ trigger:
 
 pr: none
 
-extends: 
-  template: base.yml
+jobs:
+- job: 
+  steps:
+    - script: echo Hello, world
+- template: car.yml
   parameters:
-    name: 'Test1'
+    auto: true
+    brand: testa
+    wheels: -4
