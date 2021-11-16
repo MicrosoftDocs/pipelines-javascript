@@ -1,7 +1,6 @@
 parameters:
 - name: name
   type: string
-  default: base
   
 jobs:
   - job: 
