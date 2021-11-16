@@ -1,0 +1,8 @@
+parameters:
+- name: name
+  type: string
+  default: base
+  
+
+- script: echo "Welcome to $(name)"
+  displayName: Welcome message
