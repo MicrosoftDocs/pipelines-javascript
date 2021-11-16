@@ -1,8 +1,8 @@
-parameters:
-  - name: buildApp
-    displayName: Build web app?
-    default: true
-    type: boolean
+# parameters:
+#   - name: buildApp
+#     displayName: Build web app?
+#     default: true
+#     type: boolean
     
 jobs:
 - job:
@@ -13,9 +13,9 @@ jobs:
         auto: false
         brand: toyota
 
-- ${{ if parameters.buildApp }}:
-  - template: job.template.yml
-    parameters:
-      name: Linux
-      pool:
-        vmImage: 'ubuntu-latest'
+# - ${{ if parameters.buildApp }}:
+#   - template: job.template.yml
+#     parameters:
+#       name: Linux
+#       pool:
+#         vmImage: 'ubuntu-latest'
