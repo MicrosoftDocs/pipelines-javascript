@@ -8,11 +8,6 @@ trigger:
 
 pr: none
 
-parameters:
-  - name: name
-    type: string
-    default: Silviu
-
 extends:
   template: base.yml
   parameters:
