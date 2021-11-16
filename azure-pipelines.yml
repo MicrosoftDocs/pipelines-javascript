@@ -6,7 +6,7 @@
 parameters:
   - name: buildApp
     displayName: Build web app?
-    default: false
+    default: true
     type: boolean
     
 trigger:
