@@ -10,6 +10,3 @@ jobs:
     steps:  
       - script: echo "Welcome to $(name)"
         displayName: Welcome message
-  - ${{ each job in parameters.jobs }}:
-    - ${{ each pair in job }}:
-      - ${{ pair.key }}: ${{ pair.value }}
