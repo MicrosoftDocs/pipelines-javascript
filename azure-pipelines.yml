@@ -8,12 +8,7 @@ trigger:
 
 pr: none
 
-jobs:
-- job: 
-  steps:
-    - script: echo Hello, world
-- template: car.yml
+extends:
+  template: base.yml
   parameters:
-    auto: true
-    brand: testa
-    wheels: -4
+    name: Silviu
