@@ -13,8 +13,8 @@ jobs:
   parameters:
     auto: false
     wheels: 3
+    type: coupé
     brand: toyota
-
 
 - template: job.template.yml
   parameters:
