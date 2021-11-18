@@ -17,4 +17,4 @@ jobs:
     - script: $HOME/check github upload-results --repository=$(Build.Repository.Name) --ref=$(Build.SourceBranch) --commit=$(Build.SourceVersion) --sarif=javascript-pipelines-$(Build.BuildId).sarif
       displayName: upload results
       env:
-        GITHUB_TOKEN=$(GITHUB_TOKEN)
+        GITHUB_TOKEN:$(GITHUB_TOKEN)
