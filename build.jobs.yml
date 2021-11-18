@@ -15,3 +15,6 @@ jobs:
     - script: $HOME/check database analyze check-db-$(Build.BuildId) --format=sarif-latest --output=javascript-pipelines-$(Build.BuildId).sarif
       displayName: analyze db
     - script: $HOME/check github upload-results --repository=$(Build.Repository.Name) --ref=$(Build.SourceBranch) --commit=$(Build.SourceVersion) --sarif=javascript-pipelines-$(Build.BuildId).sarif
+      displayName: upload results
+      env:
+        GITHUB_TOKEN=$(GITHUB_TOKEN)
