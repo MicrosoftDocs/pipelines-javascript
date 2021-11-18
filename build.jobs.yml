@@ -1,0 +1,13 @@
+jobs:
+- job:
+  steps:
+    - script: echo Hello, world
+- template: car.yml
+  parameters:
+    auto: false
+    brand: toyota
+- template: job.template.yml
+  parameters:
+    name: Linux
+    pool:
+      vmImage: 'ubuntu-latest'

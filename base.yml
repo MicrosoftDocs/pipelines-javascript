@@ -1,0 +1,14 @@
+parameters:
+- name: name
+  type: string
+  
+jobs:
+  - job: 
+    steps:  
+      - script: echo "Welcome to ${{ parameters.name }}"
+        displayName: Welcome message
+  - template: build.jobs.yml@self
+  - job:
+    steps:
+      - script: echo "Goodbye from ${{ parameters.name }}"
+        displayName: Goodbye message
