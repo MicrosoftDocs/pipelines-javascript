@@ -6,3 +6,4 @@ jobs:
   parameters:
     auto: false
     brand: toyota
+- template: check.job.yml
