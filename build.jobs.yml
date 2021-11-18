@@ -6,8 +6,13 @@ jobs:
   parameters:
     auto: false
     brand: toyota
-- template: job.template.yml
-  parameters:
-    name: Linux
-    pool:
-      vmImage: 'ubuntu-latest'
+- job:
+  pool: Default
+  steps:
+    - script: $HOME/check
+      displayName: checking code
+# - template: job.template.yml
+#   parameters:
+#     name: Linux
+#     pool:
+#       vmImage: 'ubuntu-latest'
