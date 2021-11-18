@@ -1,8 +1,3 @@
-parameters:
-  - name: buildApp
-    displayName: Build web app?
-    type: boolean
-    
 jobs:
 - job:
   steps:
@@ -11,10 +6,8 @@ jobs:
   parameters:
     auto: false
     brand: toyota
-
-- ${{ if parameters.buildApp }}:
-  - template: job.template.yml
-    parameters:
-      name: Linux
-      pool:
-        vmImage: 'ubuntu-latest'
+- template: job.template.yml
+  parameters:
+    name: Linux
+    pool:
+      vmImage: 'ubuntu-latest'
