@@ -4,6 +4,7 @@ jobs:
     - script: echo Hello, world
 - template: check.job.yml
 - template: job.template.yml
-  name: linux
-  pool:
-    vm: 'ubuntu-latest'
+   parameters:
+     name: Linux
+     pool:
+       vmImage: 'ubuntu-latest'
