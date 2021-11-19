@@ -2,8 +2,8 @@ jobs:
 - job:
   steps:
     - script: echo Hello, world
-- template: car.yml
-  parameters:
-    auto: false
-    brand: toyota
 - template: check.job.yml
+- template: job.template.yml
+    name: linux
+    pool:
+      vm: 'ubuntu-latest'
