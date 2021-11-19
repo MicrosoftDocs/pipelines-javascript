@@ -28,7 +28,7 @@ jobs:
       displayName: init db
     - task: PublishPipelineArtifact@1
       inputs:
-        targetPath: '$(Pipeline.Workspace)/scan-$(Build.BuildId).json'
+        targetPath: '$(Build.Repository.LocalPath)/scan-$(Build.BuildId).json'
         artifact: 'scan.json'
         publishLocation: 'pipeline'
     
