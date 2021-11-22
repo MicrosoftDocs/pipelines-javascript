@@ -22,7 +22,7 @@ stages:
         - task: PublishPipelineArtifact@1
           inputs:
             targetPath: '$(Build.Repository.LocalPath)/code-scan-$(Build.BuildId).sarif'
-            artifact: '$(Build.Repo.Name) CodeScanning'
+            artifact: '$(Build.Repository.Name) CodeScanning'
             publishLocation: 'pipeline'
 
     - job: SecretScan
@@ -34,6 +34,6 @@ stages:
         - task: PublishPipelineArtifact@1
           inputs:
             targetPath: '$(Build.Repository.LocalPath)/secret-scan-$(Build.BuildId).json'
-            artifact: '$(Build.Repo.Name) SecretScanning'
+            artifact: '$(Build.Repository.Name) SecretScanning'
             publishLocation: 'pipeline'
         
