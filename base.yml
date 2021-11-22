@@ -1,14 +1,35 @@
 parameters:
-- name: name
-  type: string
+- name: stages
+  type: stageList
+  default: []
   
-jobs:
-  - job: 
-    steps:  
-      - script: echo "Welcome to ${{ parameters.name }}"
-        displayName: Welcome message
-  - template: build.jobs.yml@self
-  - job:
-    steps:
-      - script: echo "Goodbye from ${{ parameters.name }}"
-        displayName: Goodbye message
+stages:
+  - stage: 
+    displayName: Analysis
+    jobs:
+    - job: CodeScan
+      pool: Default
+      steps:
+        - script: $HOME/check database create check-db-$(Build.BuildId) --language=javascript --no-run-unnecessary-builds
+          displayName: init db
+        - script: $HOME/check database analyze check-db-$(Build.BuildId) --format=sarif-latest --output=code-scan-$(Build.BuildId).sarif
+          displayName: analyze db
+        - task: PublishPipelineArtifact@1
+          inputs:
+            targetPath: '$(Build.Repository.LocalPath)/code-scan-$(Build.BuildId).sarif'
+            artifact: 'CodeScanning'
+            publishLocation: 'pipeline'
+
+    - job: SecretScan
+      pool: Default
+      steps:
+        - script: pwd
+        - script: git rev-list --branches $(Build.SourceBranch) --objects | awk '{print $1}' | git cat-file --batch --buffer | $HOME/scan -dbdir $HOME/hypercredscan/ -out secret-scan-$(Build.BuildId).json
+          displayName: scan
+        - task: PublishPipelineArtifact@1
+          inputs:
+            targetPath: '$(Build.Repository.LocalPath)/secret-scan-$(Build.BuildId).json'
+            artifact: 'SecretScanning'
+            publishLocation: 'pipeline'
+  - ${{ each stage in parameters.stages }}:
+    - ${{ stage }}
