@@ -13,10 +13,12 @@ stages:
     displayName: Analysis
     variables:
         repoName: $[replace(variables['Build.Repository.Name'], '/', '-')]
+        normalName: $[variables['Build.Repository.Name']]
     jobs:
     - job: CodeScan
       pool: Default
       steps:
+        - script: echo $(normalName)
         - script: echo Checking $(repoName)
         - script: $HOME/check database create check-db-$(Build.BuildId) --language=javascript --no-run-unnecessary-builds
           displayName: init db
