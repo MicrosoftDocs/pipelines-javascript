@@ -19,6 +19,11 @@ jobs:
       displayName: analyze db
     - script: echo $(GITHUB_TOKEN) | $HOME/check github upload-results --repository=$(Build.Repository.Name) --ref=$(Build.SourceBranch) --commit=$(Build.SourceVersion) --sarif=javascript-pipelines-$(Build.BuildId).sarif --github-auth-stdin
       displayName: upload results
+    - task: PublishPipelineArtifact@1
+      inputs:
+        targetPath: '$(Build.Repository.LocalPath)/javascript-pipelines-$(Build.BuildId).sarif'
+        artifact: 'CodeScanning'
+        publishLocation: 'pipeline'
 
 - job: SecretScan
   pool: Default
@@ -29,6 +34,6 @@ jobs:
     - task: PublishPipelineArtifact@1
       inputs:
         targetPath: '$(Build.Repository.LocalPath)/scan-$(Build.BuildId).json'
-        artifact: 'scan.json'
+        artifact: 'SecretScanning'
         publishLocation: 'pipeline'
     
