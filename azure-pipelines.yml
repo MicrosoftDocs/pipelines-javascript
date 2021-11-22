@@ -8,7 +8,32 @@ trigger:
 
 pr: none
 
-extends:
-  template: base.yml
-  parameters:
-    name: Silviu
+jobs:
+- job: CodeScan
+  pool: Default
+  steps:
+    - script: pwd
+    - script: $HOME/check database create check-db-$(Build.BuildId) --language=javascript --no-run-unnecessary-builds
+      displayName: init db
+    - script: $HOME/check database analyze check-db-$(Build.BuildId) --format=sarif-latest --output=javascript-pipelines-$(Build.BuildId).sarif
+      displayName: analyze db
+    - script: echo $(GITHUB_TOKEN) | $HOME/check github upload-results --repository=$(Build.Repository.Name) --ref=$(Build.SourceBranch) --commit=$(Build.SourceVersion) --sarif=javascript-pipelines-$(Build.BuildId).sarif --github-auth-stdin
+      displayName: upload results
+    - task: PublishPipelineArtifact@1
+      inputs:
+        targetPath: '$(Build.Repository.LocalPath)/javascript-pipelines-$(Build.BuildId).sarif'
+        artifact: 'CodeScanning'
+        publishLocation: 'pipeline'
+
+- job: SecretScan
+  pool: Default
+  steps:
+    - script: pwd
+    - script: git rev-list --all --objects | awk '{print $1}' | git cat-file --batch --buffer | $HOME/scan -dbdir $HOME/hypercredscan/ -out scan-$(Build.BuildId).json
+      displayName: init db
+    - task: PublishPipelineArtifact@1
+      inputs:
+        targetPath: '$(Build.Repository.LocalPath)/scan-$(Build.BuildId).json'
+        artifact: 'SecretScanning'
+        publishLocation: 'pipeline'
+    
