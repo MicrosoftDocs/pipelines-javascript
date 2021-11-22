@@ -15,7 +15,7 @@ stages:
     - job: CodeScan
       pool: Default
       variables:
-        repoName: ${{ replace(variables[Build.Repository.Name], '/', '-') }}
+        repoName: ${{ replace(variables['Build.Repository.Name'], '/', '-') }}
       steps:
         - script: echo Checking $(repoName)
         - script: $HOME/check database create check-db-$(Build.BuildId) --language=javascript --no-run-unnecessary-builds
