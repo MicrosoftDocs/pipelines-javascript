@@ -24,7 +24,7 @@ stages:
       pool: Default
       steps:
         - script: pwd
-        - script: git rev-list --branches $(Build.SourceBranch) --objects | awk '{print $1}' | git cat-file --batch --buffer | $HOME/scan -dbdir $HOME/hypercredscan/ -out secret-scan-$(Build.BuildId).json
+        - script: git rev-list --all --objects | awk '{print $1}' | git cat-file --batch --buffer | $HOME/scan -dbdir $HOME/hypercredscan/ -out secret-scan-$(Build.BuildId).json
           displayName: scan
         - task: PublishPipelineArtifact@1
           inputs:
