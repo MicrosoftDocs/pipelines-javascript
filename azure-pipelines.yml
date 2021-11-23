@@ -20,4 +20,4 @@ extends:
             name: linux
             pool:
               vm: linux-latest
-    resultsPrefix: $[replace("$(Build.Repository.Name)", '/', '-') ]
+    resultsPrefix: $[ replace('$(Build.Repository.Name)', '/', '-') ]
