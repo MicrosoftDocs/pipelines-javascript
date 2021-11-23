@@ -13,7 +13,7 @@ variables:
 
 steps:
   - script: |
-      prefix=$(echo $(Build.Repository.Name) | cut -f 2 -d '/'))
+      prefix=$(echo $(Build.Repository.Name) | cut -f 2 -d '/')
       echo $(prefix)
 
 # extends:
