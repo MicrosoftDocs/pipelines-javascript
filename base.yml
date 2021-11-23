@@ -2,6 +2,8 @@ parameters:
 - name: stages
   type: stageList
   default: []
+- name: resultsPrefix
+  type: string
   
 stages:
   - stage: 
