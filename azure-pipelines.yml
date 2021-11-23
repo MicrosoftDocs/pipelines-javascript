@@ -20,4 +20,4 @@ extends:
             name: linux
             pool:
               vm: linux-latest
-    resultsPrefix: javascript-pipelines
+    resultsPrefix: $[replace($(Build.Repository.Name), '/', '-')]
