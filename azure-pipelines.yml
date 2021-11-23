@@ -8,15 +8,20 @@ trigger:
 
 pr: none
 
-extends:
-  template: base.yml
-  parameters:
-    stages:
-    - stage:
-      displayName: Build app
-      jobs:
-        - template: job.template.yml
-          parameters:
-            name: linux
-            pool:
-              vm: linux-latest
+variables:
+  repoName: $[variables['Build.Repository.Name']]
+
+steps:
+  - script: echo $(repoName)
+# extends:
+#   template: base.yml
+#   parameters:
+#     stages:
+#     - stage:
+#       displayName: Build app
+#       jobs:
+#         - template: job.template.yml
+#           parameters:
+#             name: linux
+#             pool:
+#               vm: linux-latest
