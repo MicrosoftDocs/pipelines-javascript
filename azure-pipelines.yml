@@ -9,7 +9,7 @@ trigger:
 pr: none
 
 variables: 
-  resultsPrefix: $[ replace('$(Build.Repository.Name)', '/', '-') ]
+  resultsPrefix: $[ replace(variables['$(Build.Repository.Name)'], '/', '-') ]
 extends:
   template: base.yml
   parameters:
