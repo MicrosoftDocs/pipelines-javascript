@@ -21,4 +21,4 @@ extends:
             pool:
               vm: linux-latest
     # resultsPrefix: $[ replace('$(Build.Repository.Name)', '/', '-') ]
-      resultsPrefix: $[replace('silviu','u','o')]
+    resultsPrefix: $[replace('silviu','u','o')]
