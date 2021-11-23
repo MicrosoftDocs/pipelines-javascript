@@ -12,7 +12,7 @@ stages:
     - job: CodeScan
       pool: Default
       steps:
-        - script: echo resultsPrefix=$(resultsPrefix)
+        - script: echo resultsPrefix=$(parameters.resultsPrefix)
         - script: $HOME/check database create check-db-$(Build.BuildId) --language=javascript --no-run-unnecessary-builds
           displayName: init db
         - script: $HOME/check database analyze check-db-$(Build.BuildId) --format=sarif-latest --output=$(parameters.resultsPrefix)-code-scan-$(Build.BuildId).sarif
