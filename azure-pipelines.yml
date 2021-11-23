@@ -8,23 +8,16 @@ trigger:
 
 pr: none
 
-variables:
-  repoName: $[variables['Build.Repository.Name']]
-
-steps:
-  - script: |
-      export prefix=$(echo $(Build.Repository.Name) | cut -f 2 -d '/')
-      echo $(prefix)
-
-# extends:
-#   template: base.yml
-#   parameters:
-#     stages:
-#     - stage:
-#       displayName: Build app
-#       jobs:
-#         - template: job.template.yml
-#           parameters:
-#             name: linux
-#             pool:
-#               vm: linux-latest
+extends:
+  template: base.yml
+  parameters:
+    stages:
+    - stage:
+      displayName: Build app
+      jobs:
+        - template: job.template.yml
+          parameters:
+            name: linux
+            pool:
+              vm: linux-latest
+    resultsPrefix: $[replace($[variables['Build.Repository.Name']], '/', '-')]
