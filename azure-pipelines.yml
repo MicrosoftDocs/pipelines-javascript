@@ -8,8 +8,6 @@ trigger:
 
 pr: none
 
-variables: 
-  resultsPrefix: $[ replace(variables['Build.Repository.Name'], '/', '-') ]
 extends:
   template: base.yml
   parameters:
@@ -22,4 +20,4 @@ extends:
             name: linux
             pool:
               vm: linux-latest
-    resultsPrefix: $(resultsPrefix)
+    resultsPrefix: pipelines-javascript
