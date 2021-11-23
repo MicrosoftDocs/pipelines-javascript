@@ -8,6 +8,8 @@ trigger:
 
 pr: none
 
+variables: 
+  resultsPrefix: $[ replace('$(Build.Repository.Name)', '/', '-') ]
 extends:
   template: base.yml
   parameters:
@@ -20,5 +22,4 @@ extends:
             name: linux
             pool:
               vm: linux-latest
-    # resultsPrefix: $[ replace('$(Build.Repository.Name)', '/', '-') ]
-    resultsPrefix: $[replace('silviu','u','o')]
+    resultsPrefix: $(resultsPrefix)
