@@ -12,7 +12,7 @@ variables:
   repoName: $[variables['Build.Repository.Name']]
 
 steps:
-  - script: echo $(repoName)
+  - script: echo $( $(Build.Repository.Name) | cut -f 2 -d '/')
 # extends:
 #   template: base.yml
 #   parameters:
