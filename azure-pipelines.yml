@@ -8,25 +8,16 @@ trigger:
 
 pr: none
 
-steps:
-- task: Application security testing@2021
-  inputs:
-    projectName: 'SilviuTesyt'
-    enableProxy: false
-    enableSastScan: true
-    incScan: false
-    avoidDuplicateScans: true
-    enableDependencyScan: false
-# extends:
-#   template: base.yml
-#   parameters:
-#     stages:
-#     - stage:
-#       displayName: Build app
-#       jobs:
-#         - template: job.template.yml
-#           parameters:
-#             name: linux
-#             pool:
-#               vm: linux-latest
-#     resultsPrefix: pipelines-javascript
+extends:
+  template: base.yml
+  parameters:
+    stages:
+    - stage:
+      displayName: Build app
+      jobs:
+        - template: job.template.yml
+          parameters:
+            name: linux
+            pool:
+              vm: linux-latest
+    resultsPrefix: pipelines-javascript
