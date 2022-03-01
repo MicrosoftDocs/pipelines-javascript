@@ -4,9 +4,6 @@ pipeline {
         // This is required if you want to clean before build
         skipDefaultCheckout(true)
     }
-    
-    tools {nodejs "nodejs"}
-    
     stages {
         stage('cleaning workspace') {
             steps {
