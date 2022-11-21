@@ -5,7 +5,7 @@
 
 trigger:
 - main
-#Once change happened on master it will trigger automatically
+# Once change happened on master(main) it will trigger automatically
 
 pool:
   vmImage: ubuntu-latest
