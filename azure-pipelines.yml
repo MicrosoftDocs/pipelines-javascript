@@ -28,5 +28,8 @@ stages:
         archiveType: zip
         archiveFile: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
         replaceExistingArchive: false
+    - task: CmdLine@2
+      inputs:
+        script: echo "$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip"
     - upload: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
       artifact: Devops-test
