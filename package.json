@@ -21,21 +21,5 @@
   },
   "scripts": {
     "build": "nyc --reporter=cobertura --reporter=html ./node_modules/.bin/mocha tests/**/*.js --reporter mocha-junit-reporter --reporter-options mochaFile=./TEST-RESULTS.xml"
-  },
-  {
-  "name": "continuous-test-code-coverage-guide",
-  "scripts": {
-    "start": "webpack",
-    "test": "jest --coverage --coverageDirectory=output/coverage/jest"
-  },
-  ...
-  "jest": {
-    "coverageReporters": [
-      "text",
-      "cobertura"
-    ]
-    ...
   }
-}
-}
 }
